@@ -50,6 +50,15 @@ void readBook(Book* book)
 	gets_s(book->publishing.city, STR_LENGTH);
 }
 
+void getBooksByPublishingYear(Book books[], int size, int year, char* city)
+{
+	for (int i = 0; i < size; i++) {
+		if (books[i].publishing.year > year && strcmp(books[i].publishing.city, city) == 0) {
+			printf("%s\n", books[i].name);
+		}
+	}
+}
+
 int main()
 {
 	// ƒревний, длинный способ
@@ -59,6 +68,8 @@ int main()
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 	int size;
+	int year;
+	char city[STR_LENGTH];
 	Book books[MAX_COUNT];
 	printf("¬ведите кол-во книг: ");
 	scanf("%d", &size);
@@ -68,5 +79,11 @@ int main()
 		printf(" нига %d\n", i + 1);
 		readBook(&books[i]);
 	}
+	printf("¬ведите год: ");
+	scanf("%d", &year);
+	getchar();
+	printf("\n¬ведите город: ");
+	gets_s(city, STR_LENGTH);
+	getBooksByPublishingYear(books, size, year, city);
 	return 0;
 }
