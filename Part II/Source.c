@@ -53,7 +53,7 @@ void loadFromFile(Book books[], int* size, char* fileName)
 	int index = 0;
 	while (fgets(line, STR_LENGTH, f))
 	{
-		ptr = strtok(line, "|\n");
+		ptr = strtok(line, "\t\n");
 		index = 0;
 		while (ptr)
 		{
@@ -83,7 +83,7 @@ void loadFromFile(Book books[], int* size, char* fileName)
 			}
 
 			index++;
-			ptr = strtok(NULL, "|\n");
+			ptr = strtok(NULL, "\t\n");
 		}
 		// После прочтения каждой строки, увеличиваем кол-во элементов в массиве
 		(*size)++;
